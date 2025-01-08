@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
-import 'package:big_decimal/src/big_decimal_infinity.dart';
+import 'big_decimal_infinity.dart';
 
 enum RoundingMode {
   UP,
