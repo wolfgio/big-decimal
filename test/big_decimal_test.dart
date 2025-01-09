@@ -15,6 +15,12 @@ void main() {
         expect(true, bigdec is BigDecimalInfinity);
       });
 
+      test('Should return BigDecimalNegativeInfinity', () {
+        final bigdec = BigDecimal.parse('-Infinity');
+
+        expect(true, bigdec is BigDecimalNegativeInfinity);
+      });
+
       test('Should return BigDecimal', () {
         final bigdec = BigDecimal.parse('0');
 

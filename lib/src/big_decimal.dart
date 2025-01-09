@@ -27,7 +27,10 @@ class BigDecimal implements Comparable<BigDecimal> {
     required this.scale,
   });
 
-  factory BigDecimal.fromInfinity() {
+  factory BigDecimal.fromInfinity({bool? negative}) {
+    if (negative == true) {
+      return BigDecimalNegativeInfinity();
+    }
     return BigDecimalInfinity();
   }
 
@@ -64,6 +67,10 @@ class BigDecimal implements Comparable<BigDecimal> {
   factory BigDecimal.parse(String value) {
     if (value == double.infinity.toString()) {
       return BigDecimal.fromInfinity();
+    }
+
+    if (value == double.negativeInfinity.toString()) {
+      return BigDecimal.fromInfinity(negative: true);
     }
 
     var sign = '';
