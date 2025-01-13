@@ -27,13 +27,6 @@ class BigDecimal implements Comparable<BigDecimal> {
     required this.scale,
   });
 
-  factory BigDecimal.fromInfinity({bool? negative}) {
-    if (negative == true) {
-      return BigDecimalNegativeInfinity();
-    }
-    return BigDecimalInfinity();
-  }
-
   factory BigDecimal.fromBigInt(BigInt value) {
     return BigDecimal(
       intVal: value,
@@ -44,6 +37,8 @@ class BigDecimal implements Comparable<BigDecimal> {
   static BigDecimal zero = BigDecimal.fromBigInt(BigInt.zero);
   static BigDecimal one = BigDecimal.fromBigInt(BigInt.one);
   static BigDecimal two = BigDecimal.fromBigInt(BigInt.two);
+  static BigDecimal infinity = BigDecimalInfinity();
+  static BigDecimal negativeInifinity = BigDecimalInfinity(isNegative: true);
 
   static int nextNonDigit(String value, [int start = 0]) {
     var index = start;
@@ -66,11 +61,11 @@ class BigDecimal implements Comparable<BigDecimal> {
 
   factory BigDecimal.parse(String value) {
     if (value == double.infinity.toString()) {
-      return BigDecimal.fromInfinity();
+      return BigDecimal.infinity;
     }
 
     if (value == double.negativeInfinity.toString()) {
-      return BigDecimal.fromInfinity(negative: true);
+      return BigDecimal.negativeInifinity;
     }
 
     var sign = '';
