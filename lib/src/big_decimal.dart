@@ -1,4 +1,5 @@
 // ignore_for_file: constant_identifier_names
+import 'dart:math' as math;
 
 enum RoundingMode {
   UP,
@@ -163,7 +164,7 @@ class BigDecimal implements Comparable<BigDecimal> {
   }
 
   double toDouble() =>
-      intVal.toDouble() / BigInt.from(10).pow(scale).toDouble();
+      intVal.toDouble() / math.pow(10.0, scale);
   BigInt toBigInt({RoundingMode roundingMode = RoundingMode.UNNECESSARY}) =>
       withScale(0, roundingMode: roundingMode).intVal;
   int toInt({RoundingMode roundingMode = RoundingMode.UNNECESSARY}) =>
