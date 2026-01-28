@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.5.1
+- Fix `toDouble()` allowing it to take negative exponents
+
 ## 0.5.0
 - Add toPlainString()
 

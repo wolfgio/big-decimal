@@ -1,4 +1,5 @@
 // ignore_for_file: constant_identifier_names
+import 'dart:math' as math;
 
 import 'big_decimal_infinity.dart';
 
@@ -167,7 +168,7 @@ class BigDecimal implements Comparable<BigDecimal> {
     throw Exception('Invalid operation: Exponent should be between 0 and 999999999');
   }
 
-  double toDouble() => intVal.toDouble() / BigInt.from(10).pow(scale).toDouble();
+  double toDouble() => intVal.toDouble() / math.pow(10.0, scale);
   BigInt toBigInt({RoundingMode roundingMode = RoundingMode.UNNECESSARY}) =>
       withScale(0, roundingMode: roundingMode).intVal;
   int toInt({RoundingMode roundingMode = RoundingMode.UNNECESSARY}) => toBigInt(roundingMode: roundingMode).toInt();
